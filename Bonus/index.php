@@ -1,9 +1,23 @@
+<!-- 
+### Bonus 1
+Modificare la classe `Movie` in modo che accetti piú di un genere
+ -->
 <?php
+
+class Genres
+{
+    public $genres;
+
+    public function __construct($genres)
+    {
+        $this->genres = $genres;
+    }
+}
 class Movie
 {
     //Variabili d'istanza
     public $title;
-    public $genre;
+    public $genre = []; //Diventa un array di Genres
     public $releaseYear;
     public $description;
 
@@ -32,17 +46,27 @@ class Movie
     public function printMovie()
     {
         echo 'Titolo: ' . $this->title . '<br>';
-        echo 'Genere: ' . $this->genre . '<br>';
-        echo 'Anno di rilascio: ' . $this->releaseYear . '<br>';
-        echo 'Titolo: ' . $this->description . '<br>';
+        // echo 'Genere: ' . $this->genre . '<br>';
+        echo 'Generi: ';
+        foreach ($this->genre as $genre) {
+            echo $genre->genres . ' ';
+        }
+        echo '<br>' . 'Anno di rilascio: ' . $this->releaseYear . '<br>';
+        echo 'Descrizione: ' . $this->description . '<br>';
+        echo "--------------------------<br>";
     }
 }
-$movie1 = new Movie('Inception', 'Sci-Fi, Action', '2010', "Un ladro esperto è specializzato nell'arte di rubare segreti entrando nei sogni altrui. Viene incaricato di compiere un'azione apparentemente impossibile: l'inserimento di un'idea nella mente di qualcuno.");
-$movie2 = new Movie('The Shawshank Redemption', 'Drama', '1994', "Un banchiere condannato ingiustamente alla prigione di Shawshank cerca la redenzione nel corso degli anni, costruendo relazioni uniche con i suoi compagni detenuti e sperimentando il potere della speranza.");
+//Inserisco tutto in un array per non ripetere echo $istanza->printMovie(); echo $istanza->printMovie();
+$movies = [
+    new Movie('Inception', [new Genres('Sci-Fi'), new Genres('Action')], '2010', "Un ladro esperto è specializzato nell'arte di rubare segreti entrando nei sogni altrui. Viene incaricato di compiere un'azione apparentemente impossibile: l'inserimento di un'idea nella mente di qualcuno."),
+    new Movie('The Shawshank Redemption', [new Genres('Drama')], '1994', "Un banchiere condannato ingiustamente alla prigione di Shawshank cerca la redenzione nel corso degli anni, costruendo relazioni uniche con i suoi compagni detenuti e sperimentando il potere della speranza."),
+];
 
-echo $movie1->printMovie();
-echo "--------------------------<br>";
-echo $movie2->printMovie();
+//Ciclo
+foreach ($movies as $movie) {
+    $movie->printMovie();
+};
+
 // echo $movie1->getTitle();
 // echo "<br>--------------------------<br>";
 // echo $movie2->getTitle();
