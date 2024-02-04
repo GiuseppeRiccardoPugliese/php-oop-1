@@ -1,4 +1,6 @@
 <?php
+
+require_once __DIR__ . '/genre.php';
 class Movie
 {
     //Variabili d'istanza
