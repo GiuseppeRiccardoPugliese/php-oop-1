@@ -3,6 +3,8 @@
 Modificare la classe `Movie` in modo che accetti piú di un genere
  -->
 <?php
+require_once __DIR__ . '/Models/genre.php';
+require_once __DIR__ . '/Models/movie.php';
 
 //Inserisco tutto in un array per non ripetere echo $istanza->printMovie(); echo $istanza->printMovie();
 $movies = [
