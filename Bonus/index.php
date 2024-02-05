@@ -5,19 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <?php
+    require_once __DIR__ . '/db.php';
+    ?>
 </head>
 
 <body>
 
-    <?php
-    require_once __DIR__ . '/db.php';
+    <h1>Movies: </h1>
+    <ul>
+        <?php
+        foreach ($movies as $movie) {
+        ?>
+            <li>
+                <?php
 
-    //Ciclo
-    foreach ($movies as $movie) {
-        $movie->printMovie();
-    };
+                echo $movie->printMovie();
+                ?>
+            </li>
+        <?php
+        }
+        ?>
+    </ul>
 
-    ?>
+
 </body>
 
 </html>
